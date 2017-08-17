@@ -46,6 +46,7 @@ out=args.outbam
 chr_list=[]
 
 for i in range(1,20):
+    chr_list.append('chr')
     chr_list.append(str(i))
 
 chr_list.append('X')
