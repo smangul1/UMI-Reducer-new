@@ -48,9 +48,9 @@ chr_list=[]
 for i in range(1,20):
     chr_list.append('chr'+str(i))
 
-chr_list.append('X')
-chr_list.append('Y')
-chr_list.append('MT')
+chr_list.append('chr'+'X')
+chr_list.append('chr'+'Y')
+chr_list.append('chr'+'MT')
 
 print chr
 
@@ -99,25 +99,25 @@ print "Open ",bam, "via pysam"
 
 
 for chr in chr_list:
-    dict.clear()
-    position[:]=[]
-    print "----------chr",chr
-    for read in samfile.fetch(chr):
-        mappedReads.append(read.query_name)
+    if chr.isdigit() == true
+        dict.clear()
+        position[:]=[]
+        print "----------chr",chr
+        for read in samfile.fetch(chr):
+            mappedReads.append(read.query_name)
         
         
-        if args.m:
-            if read.mapq==50:
-                numberReadsUnique+=1
-            numberReadsUniquePlusMultiMapped+=1
-            position.append(read.reference_start)
-            readLength.append(len(read.query_sequence))
-        else:
-            if read.mapq==50:
-                numberReadsUnique+=1
+            if args.m:
+                if read.mapq==50:
+                    numberReadsUnique+=1
+                numberReadsUniquePlusMultiMapped+=1
                 position.append(read.reference_start)
                 readLength.append(len(read.query_sequence))
-
+            else:
+                if read.mapq==50:
+                    numberReadsUnique+=1
+                    position.append(read.reference_start)
+                    readLength.append(len(read.query_sequence))
 
     print "numberReadsUnique",numberReadsUnique
     print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
