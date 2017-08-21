@@ -118,7 +118,9 @@ for chr in chr_list:
                     numberReadsUnique+=1
                     position.append(read.reference_start)
                     readLength.append(len(read.query_sequence))
-
+    else:
+        chr += 1
+                    
     print "numberReadsUnique",numberReadsUnique
     print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
 
