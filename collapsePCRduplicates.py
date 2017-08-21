@@ -103,7 +103,7 @@ for chr in chr_list:
         dict.clear()
         position[:]=[]
         print "----------chr",chr
-        for read in samfile.fetch(chr):
+        for read in samfile.fetch('chr'+chr):
             mappedReads.append(read.query_name)
         
         
