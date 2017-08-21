@@ -139,7 +139,7 @@ for chr in chr_list:
         count+=1
         
         if val==1:
-            for read in samfile.fetch(chr,key,key+1):
+            for read in samfile.fetch('chr'+chr,key,key+1):
                 if read.reference_start==key:
                     outfile.write(read)
                     readLength_filtered.append(len(read.query_sequence))
