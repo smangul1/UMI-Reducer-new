@@ -101,7 +101,7 @@ print "Open ",bam, "via pysam"
 for chr in chr_list:
     dict.clear()
     position[:]=[]
-    if chr.isdigit()
+    if Character.isdigit(chr)
         print "----------chr",chr
         for read in samfile.fetch('chr'+chr):
             mappedReads.append(read.query_name)
