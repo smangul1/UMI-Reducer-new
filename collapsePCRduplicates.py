@@ -52,6 +52,8 @@ chr_list.append('chr'+'X')
 chr_list.append('chr'+'Y')
 chr_list.append('chr'+'MT')
 
+for chr in chr_list: print chr
+"""
 print chr
 
 position=[]
