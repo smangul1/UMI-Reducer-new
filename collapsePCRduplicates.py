@@ -54,7 +54,6 @@ chr_list.append('chr'+'MT')
 
 for chr in chr_list: print chr
 
-print chr
 
 position=[]
 position_all_uniq=[]
