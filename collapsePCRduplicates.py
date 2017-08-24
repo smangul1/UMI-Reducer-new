@@ -102,22 +102,21 @@ print "Open ",bam, "via pysam"
 for chr in chr_list:
     dict.clear()
     position[:]=[]
-        print "----------",chr
-        for read in samfile.fetch('chr'+chr):
-            mappedReads.append(read.query_name)
+    print "----------",chr
+    for read in samfile.fetch('chr'+chr):
+        mappedReads.append(read.query_name)
         
-        
-            if args.m:
-                if read.mapq==50:
-                    numberReadsUnique+=1
+        if args.m:
+            if read.mapq==50:
+                numberReadsUnique+=1
                 numberReadsUniquePlusMultiMapped+=1
                 position.append(read.reference_start)
                 readLength.append(len(read.query_sequence))
-            else:
-                if read.mapq==50:
-                    numberReadsUnique+=1
-                    position.append(read.reference_start)
-                    readLength.append(len(read.query_sequence))
+        else:
+            if read.mapq==50:
+                numberReadsUnique+=1
+                position.append(read.reference_start)
+                readLength.append(len(read.query_sequence))
                     
     #print "numberReadsUnique",numberReadsUnique
     #print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
