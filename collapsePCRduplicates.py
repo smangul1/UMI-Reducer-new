@@ -120,8 +120,8 @@ for chr in chr_list:
                     position.append(read.reference_start)
                     readLength.append(len(read.query_sequence))
                     
-    print "numberReadsUnique",numberReadsUnique
-    print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
+    #print "numberReadsUnique",numberReadsUnique
+    #print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
 
 
 
