@@ -50,7 +50,7 @@ for i in range(1,20):
 
 chr_list.append('chr'+'X')
 chr_list.append('chr'+'Y')
-chr_list.append('chr'+'MT')
+chr_list.append('chr'+'M')
 
 for chr in chr_list: print chr
 
