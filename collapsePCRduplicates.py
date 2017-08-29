@@ -125,11 +125,11 @@ for chr in chr_list:
 
     counter_chr=collections.Counter(position)
     position_all_uniq+=position
-    print "Number of position with #reads staring >=1", len(position)
+    #print "Number of position with #reads staring >=1", len(position)
 
     count=0
 
-    print  "Processing", len(counter_chr.items()), "items"
+    #print  "Processing", len(counter_chr.items()), "items"
 
     for key,val in counter_chr.items():
         #print key,val
