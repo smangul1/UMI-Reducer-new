@@ -155,10 +155,10 @@ for chr in chr_list:
             setReads.clear()
     
             if val>1000:
-                print val, 'chr'+chr,key
+                print val, chr,key
             Read=[]
             Read[:]=[]
-            for read in samfile.fetch('chr'+chr,key,key+1):
+            for read in samfile.fetch(chr,key,key+1):
                 if read.reference_start==key:
                     Read.append(read)
                     setReads.add(read.query_name.split("_")[3]+"_"+read.query_sequence)
