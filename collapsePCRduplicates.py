@@ -104,7 +104,7 @@ for chr in chr_list:
     position[:]=[]
     print "----------",chr
     for read in samfile.fetch(chr):
-        mappedReads.append(read.query_name)
+        mappedReads.append(read.query_sequence)
         
         if args.m:
             if read.mapq==50:
@@ -143,7 +143,7 @@ for chr in chr_list:
                     outfile.write(read)
                     readLength_filtered.append(len(read.query_sequence))
                     numberReadsUnique_filtered+=1
-                    readSet.add(read.query_name)
+                    readSet.add(read.query_sequence)
      
     
 
@@ -178,7 +178,7 @@ for chr in chr_list:
                         numberReadsUnique_filtered+=1
                         readLength_filtered.append(len(Read[i].query_sequence))
                         notsetReads.add(Read[i].query_name.split("_")[3]+"_"+Read[i].query_sequence)
-                        readSet.add(Read[i].query_name)
+                        readSet.add(Read[i].query_sequence)
 
 
 
