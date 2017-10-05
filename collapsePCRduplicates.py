@@ -24,14 +24,7 @@ def editDistance(s1,s2):
 ap = argparse.ArgumentParser()
 ap.add_argument('inbam', help='Mapped reads in bam format')
 ap.add_argument('outbam', help='Output file to save reads after collapsing PCR duplicates')
-#ap.add_argument('--testN', type=int,
-#                help='Run a test using only the first N features, and then '
-#                'print out some example feature IDs and their attributes')
 ap.add_argument('--m', action='store_true',help='Save multi-mapped reads')
-ap.add_argument('--c', action='store_true',help='Change chromosome format')
-
-#cmd https://gist.github.com/daler/ec481811a44b3aa469f3
-
 args = ap.parse_args()
 
 
@@ -50,10 +43,9 @@ for i in range(1,20):
 
 chr_list.append('X')
 chr_list.append('Y')
-chr_list.append('M')
+chr_list.append('MT')
 
-for chr in chr_list: print chr
-
+print chr
 
 position=[]
 position_all_uniq=[]
@@ -102,34 +94,36 @@ print "Open ",bam, "via pysam"
 for chr in chr_list:
     dict.clear()
     position[:]=[]
-    print "----------",chr
+    print "----------chr",chr
     for read in samfile.fetch(chr):
-        mappedReads.append(read.query_sequence)
+        mappedReads.append(read.query_name)
+        
         
         if args.m:
             if read.mapq==50:
                 numberReadsUnique+=1
-                numberReadsUniquePlusMultiMapped+=1
-                position.append(read.reference_start)
-                readLength.append(len(read.query_sequence))
+            numberReadsUniquePlusMultiMapped+=1
+            position.append(read.reference_start)
+            readLength.append(len(read.query_sequence))
         else:
             if read.mapq==50:
                 numberReadsUnique+=1
                 position.append(read.reference_start)
                 readLength.append(len(read.query_sequence))
-                    
-    #print "numberReadsUnique",numberReadsUnique
-    #print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
+
+
+    print "numberReadsUnique",numberReadsUnique
+    print "numberReadsUniquePlusMultiMapped",numberReadsUniquePlusMultiMapped
 
 
 
     counter_chr=collections.Counter(position)
     position_all_uniq+=position
-    #print "Number of position with #reads staring >=1", len(position)
+    print "Number of position with #reads staring >=1", len(position)
 
     count=0
 
-    #print  "Processing", len(counter_chr.items()), "items"
+    print  "Processing", len(counter_chr.items()), "items"
 
     for key,val in counter_chr.items():
         #print key,val
@@ -143,7 +137,7 @@ for chr in chr_list:
                     outfile.write(read)
                     readLength_filtered.append(len(read.query_sequence))
                     numberReadsUnique_filtered+=1
-                    readSet.add(read.query_sequence)
+                    readSet.add(read.query_name)
      
     
 
@@ -178,7 +172,7 @@ for chr in chr_list:
                         numberReadsUnique_filtered+=1
                         readLength_filtered.append(len(Read[i].query_sequence))
                         notsetReads.add(Read[i].query_name.split("_")[3]+"_"+Read[i].query_sequence)
-                        readSet.add(Read[i].query_sequence)
+                        readSet.add(Read[i].query_name)
 
 
 
@@ -197,7 +191,6 @@ header=[]
 header.append('sample')
 header.append('Number of mapped reads')
 header.append('Number of reads mapped to unique location (UNIQUE reads)')
-header.append('Number of reads alligments after collapsing PCR dublicated (an aligment may include several copies of reads) ')
 header.append('Number of reads after collapsing PCR dublicated (each read is present once) ')
 
 
@@ -206,9 +199,6 @@ nr=[]
 nr.append(out.split('.')[0])
 nr.append(len(set(mappedReads)))
 nr.append(numberReadsUnique)
-
-
-nr.append(numberReadsUnique_filtered)
 nr.append(len(readSet))
 
 
@@ -277,7 +267,8 @@ plt.bar(x2,xbins2)
 plt.savefig(plot2)
 
 
-
+samfile.close()
 
 
 print "DONE!"
+
