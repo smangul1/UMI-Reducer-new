@@ -1,13 +1,13 @@
 import pysam
- import sys
- import collections
- import numpy as np
- import random
- import csv
- import argparse
- import matplotlib
- matplotlib.use('Agg') # Must be before importing matplotlib.pyplot or pylab!
- import matplotlib.pyplot as plt
+import sys
+import collections
+import numpy as np
+import random
+import csv
+import argparse
+import matplotlib
+matplotlib.use('Agg') # Must be before importing matplotlib.pyplot or pylab!
+import matplotlib.pyplot as plt
  
  
  #updated 09/04/2015
