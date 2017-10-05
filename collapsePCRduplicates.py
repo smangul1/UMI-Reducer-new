@@ -28,7 +28,7 @@ import matplotlib.pyplot as plt
  #                help='Run a test using only the first N features, and then '
  #                'print out some example feature IDs and their attributes')
  ap.add_argument('--m', action='store_true',help='Save multi-mapped reads')
- ap.add_argument('--c', action='store_true',help='Change chromosome format')
+
  
  #cmd https://gist.github.com/daler/ec481811a44b3aa469f3
  
