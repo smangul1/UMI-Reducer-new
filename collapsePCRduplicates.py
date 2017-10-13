@@ -135,7 +135,7 @@ for chr in chr_list:
  
     counter_chr=collections.Counter(position)
     position_all_uniq+=position
-    print "Number of position with #reads staring >=1", len(position)
+    print "Number of position with #reads starting >=1", len(position)
  
     count=0
  
